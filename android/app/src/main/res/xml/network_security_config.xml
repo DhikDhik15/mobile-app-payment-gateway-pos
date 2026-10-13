@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Network security configuration.
+
+  The backend address is injected at build time via the API_BASE_URL
+  dart-define, and development backends may use plain HTTP over the local
+  LAN (whose IP changes via DHCP, so it cannot be hardcoded here). Android
+  domain-config entries cannot express IP ranges, so cleartext is permitted
+  app-wide. HTTPS endpoints keep Android's default secure behavior: this
+  does not disable HTTPS certificate validation, and release builds
+  pointing at an HTTPS API_BASE_URL are unaffected.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Release-only network security configuration (Phase 9B).
+
+  Unlike the main configuration (which permits cleartext for LAN-based
+  development over DHCP-assigned addresses), release builds disallow
+  cleartext entirely and trust only system CAs. A release build must point
+  API_BASE_URL at a public HTTPS origin; plain-HTTP development URLs will
+  be refused by the platform before any credentials are sent.
+
+  Debug builds are unaffected: they keep using the main manifest's
+  development configuration.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

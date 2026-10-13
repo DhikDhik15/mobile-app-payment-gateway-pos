@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Release builds use the strict network configuration: no cleartext,
+         system trust anchors only. See src/release/res/xml/
+         network_security_config_release.xml. Debug builds are unaffected. -->
+    <application
+        android:networkSecurityConfig="@xml/network_security_config_release"
+        tools:replace="android:networkSecurityConfig" />
+</manifest>
