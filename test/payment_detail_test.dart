@@ -132,7 +132,7 @@ void main() {
 /// Drives a full background/foreground cycle through the states the
 /// framework accepts (resumed -> inactive -> hidden -> paused ->
 /// hidden -> inactive -> resumed).
-Future<void> _backgroundAndResume(WidgetTester tester) async {
+Future<void> backgroundAndResume(WidgetTester tester) async {
   for (final s in [
     AppLifecycleState.inactive,
     AppLifecycleState.hidden,
@@ -364,7 +364,7 @@ Future<void> _backgroundAndResume(WidgetTester tester) async {
       await tester.pumpAndSettle();
       expect(repo.getCalls, 1);
 
-      await _backgroundAndResume(tester);
+      await backgroundAndResume(tester);
       await tester.pumpAndSettle();
 
       expect(repo.getCalls, 2);
@@ -384,7 +384,7 @@ Future<void> _backgroundAndResume(WidgetTester tester) async {
 
       await _tapVisible(tester, find.text('Success'));
       await tester.pump();
-      await _backgroundAndResume(tester);
+      await backgroundAndResume(tester);
 
       // No competing reload during simulation.
       expect(repo.getCalls, 1);
